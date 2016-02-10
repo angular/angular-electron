@@ -1,0 +1,23 @@
+{
+  "name": "@angular2/electron",
+  "version": "1.0.0",
+  "description": "Electron Platform for Angular2",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/angular/angular-electron.git"
+  },
+  "keywords": [
+    "Angular2",
+    "Electron"
+  ],
+  "author": "Rob Wormald <robwormald@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/angular/angular-electron/issues"
+  },
+  "homepage": "https://github.com/angular/angular-electron#readme"
+}
