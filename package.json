@@ -4,7 +4,11 @@
   "description": "Electron Platform for Angular2",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "build": "npm run clean && tsc",
+    "build_demo": "tsc typings/browser.d.ts demo/main.ts demo/app_ui.ts --module commonjs -t es5 --experimentalDecorators --emitDecoratorMetadata",
+    "clean": "rm -rf dist",
+    "test": "test",
+    "demo": "npm run build && npm run build_demo && electron ./demo"
   },
   "repository": {
     "type": "git",
@@ -19,5 +23,15 @@
   "bugs": {
     "url": "https://github.com/angular/angular-electron/issues"
   },
-  "homepage": "https://github.com/angular/angular-electron#readme"
+  "homepage": "https://github.com/angular/angular-electron#readme",
+  "devDependencies": {
+    "electron-prebuilt": "^0.36.7",
+    "typescript": "^1.7.5"
+  },
+  "peerDependencies": {
+    "angular2": "2.0.0-beta.6"
+  },
+  "dependencies": {
+    "parse5": "^1.5.1"
+  }
 }

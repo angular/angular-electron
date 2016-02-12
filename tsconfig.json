@@ -7,9 +7,12 @@
 		"experimentalDecorators": true,
 		"emitDecoratorMetadata": true,
 		"outDir": "dist",
-		"declaration": true
+		"declaration": true,
+		"moduleResolution": "node"
     },
-    "exclude": [
-        "node_modules"
-    ]
+    "files": [
+		"typings/browser.d.ts",
+		"./src/renderer.ts",
+		"./src/main.ts"
+	]
 }
