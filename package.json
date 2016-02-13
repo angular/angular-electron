@@ -6,7 +6,7 @@
   "scripts": {
     "build": "npm run clean && tsc",
     "build_demo": "tsc typings/browser.d.ts demo/main.ts demo/app_ui.ts --module commonjs -t es5 --experimentalDecorators --emitDecoratorMetadata",
-    "clean": "rm -rf dist",
+    "clean": "rimraf dist",
     "test": "test",
     "demo": "npm run build && npm run build_demo && electron ./demo"
   },
@@ -26,7 +26,8 @@
   "homepage": "https://github.com/angular/angular-electron#readme",
   "devDependencies": {
     "electron-prebuilt": "^0.36.7",
-    "typescript": "^1.7.5"
+    "typescript": "^1.7.5",
+    "rimraf": "^2.5.2"
   },
   "peerDependencies": {
     "angular2": "2.0.0-beta.6"
