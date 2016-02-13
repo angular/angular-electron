@@ -2,3 +2,5 @@ node_modules/
 dist/
 typings/
 npm-debug.log
+.DS_Store
+demo/*.js
