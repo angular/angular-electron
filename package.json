@@ -30,7 +30,7 @@
   "homepage": "https://github.com/angular/angular-electron#readme",
   "devDependencies": {
     "electron-prebuilt": "^0.36.7",
-    "typescript": "^1.7.5",
+    "typescript": "~1.7.5",
     "rimraf": "^2.5.2"
   },
   "peerDependencies": {
