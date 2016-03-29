@@ -1,6 +1,5 @@
 import {CONST_EXPR, IS_DART} from 'angular2/src/facade/lang';
 import {MessageBus} from 'angular2/src/web_workers/shared/message_bus';
-import {NgZone} from 'angular2/src/core/zone/ng_zone';
 import {
   PLATFORM_DIRECTIVES,
   PLATFORM_PIPES,
@@ -13,7 +12,8 @@ import {
   PLATFORM_COMMON_PROVIDERS,
   RootRenderer,
   PLATFORM_INITIALIZER,
-  APP_INITIALIZER
+  APP_INITIALIZER,
+  NgZone
 } from 'angular2/core';
 import {EVENT_MANAGER_PLUGINS, EventManager} from 'angular2/platform/common_dom';
 import {provide, Provider, Injector, OpaqueToken} from 'angular2/src/core/di';
@@ -36,7 +36,7 @@ import {BrowserDomAdapter} from 'angular2/src/platform/browser/browser_adapter';
 import {wtfInit} from 'angular2/src/core/profile/wtf_init';
 import {MessageBasedRenderer} from 'angular2/src/web_workers/ui/renderer';
 import {MessageBasedXHRImpl} from 'angular2/src/web_workers/ui/xhr_impl';
-import {BrowserPlatformLocation} from 'angular2/src/router/browser_platform_location';
+import {BrowserPlatformLocation} from 'angular2/src/router/location/browser_platform_location';
 import {
   ServiceMessageBrokerFactory,
   ServiceMessageBrokerFactory_

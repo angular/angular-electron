@@ -1,13 +1,11 @@
 import * as electron from 'electron';
 import {ElectronMessageBus, ElectronMessageBusSink, ElectronMessageBusSource, ELECTRON_READY} from './electron_message_bus';
 import {ELECTRON_APP_APPLICATION_COMMON, ELECTRON_APP_PLATFORM} from './electron_app_common';
-import {NgZone} from 'angular2/src/core/zone/ng_zone';
 import {Type, CONST_EXPR, isPresent} from 'angular2/src/facade/lang';
-import {Provider} from 'angular2/src/core/di';
 import {Parse5DomAdapter} from 'angular2/src/platform/server/parse5_adapter';
-import {APP_INITIALIZER, platform, ComponentRef} from 'angular2/core';
+import {APP_INITIALIZER, platform, ComponentRef, NgZone, Provider} from 'angular2/core';
 import {MessageBus} from 'angular2/src/web_workers/shared/message_bus';
-import {COMPILER_PROVIDERS} from 'angular2/src/compiler/compiler';
+import {COMPILER_PROVIDERS} from 'angular2/compiler';
 
 export const ELECTRON_APP_APPLICATION: Array<any /*Type | Provider | any[]*/> = [
   ELECTRON_APP_APPLICATION_COMMON,

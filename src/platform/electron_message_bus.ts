@@ -47,7 +47,7 @@ export class ElectronMessageBusSink implements MessageBusSink {
 
   attachToZone(zone: NgZone): void {
     this._zone = zone;
-    this._zone.onTurnDone.subscribe(() => {this._handleOnEventDone()});
+    this._zone.onMicrotaskEmpty.subscribe(() => {this._handleOnEventDone()});
   }
 
   initChannel(channel: string, runInZone: boolean = true): void {
