@@ -8,7 +8,7 @@ export class App {
 	name: string;
 	constructor(){
 		this.name = 'Angular2 Electron!';
-		
+
 		setTimeout(() => {
 			this.name = 'Angular2 Electron!!!';
 		},1000);

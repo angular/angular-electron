@@ -11,7 +11,6 @@
 		"moduleResolution": "node"
     },
     "files": [
-		"typings/browser.d.ts",
 		"./src/renderer.ts",
 		"./src/main.ts"
 	]
