@@ -9,140 +9,185 @@ import * as import0 from '@angular/core/src/linker/ng_module_factory';
 import * as import1 from '../../../demo-app/demo-app';
 import * as import2 from '@angular/common/src/common_module';
 import * as import3 from '@angular/core/src/application_module';
-import * as import4 from '../../../platform-electron/src/electron_app';
+import * as import4 from '../../../platform-electron/src/electron_main';
 import * as import5 from '@angular/common/src/localization';
-import * as import6 from '../../../platform-electron/src/app/electron_app_renderer';
-import * as import7 from '@angular/core/src/application_init';
-import * as import8 from '@angular/core/src/application_ref';
-import * as import9 from '@angular/core/src/linker/compiler';
-import * as import10 from '@angular/platform-browser/src/security/dom_sanitization_service';
-import * as import11 from '@angular/core/src/animation/animation_queue';
-import * as import12 from '@angular/core/src/linker/view_utils';
-import * as import13 from '@angular/core/src/di/injector';
-import * as import14 from '@angular/core/src/i18n/tokens';
-import * as import15 from '@angular/core/src/application_tokens';
-import * as import16 from '@angular/core/src/zone/ng_zone';
-import * as import17 from '@angular/core/src/console';
-import * as import18 from '@angular/core/src/testability/testability';
-import * as import19 from '@angular/core/src/error_handler';
-import * as import20 from '@angular/core/src/render/api';
-import * as import21 from '@angular/core/src/security';
-import * as import22 from '@angular/core/src/change_detection/differs/iterable_differs';
-import * as import23 from '@angular/core/src/change_detection/differs/keyvalue_differs';
-import * as import24 from '@angular/core/src/linker/view';
-import * as import25 from '@angular/core/src/metadata/view';
-import * as import26 from '@angular/core/src/linker/view_type';
-import * as import27 from '@angular/core/src/change_detection/constants';
-import * as import28 from '@angular/core/src/linker/component_factory';
+import * as import6 from '../../../platform-electron/src/shared/client_message_broker';
+import * as import7 from '../../../platform-electron/src/main/renderer';
+import * as import8 from '@angular/core/src/application_init';
+import * as import9 from '@angular/core/src/application_ref';
+import * as import10 from '@angular/core/src/linker/compiler';
+import * as import11 from '@angular/platform-browser/src/security/dom_sanitization_service';
+import * as import12 from '@angular/core/src/animation/animation_queue';
+import * as import13 from '@angular/core/src/linker/view_utils';
+import * as import14 from '../../../platform-electron/src/shared/service_message_broker';
+import * as import15 from '../../../platform-electron/src/main/renderer_manager';
+import * as import16 from '@angular/core/src/di/injector';
+import * as import17 from '@angular/core/src/i18n/tokens';
+import * as import18 from '@angular/core/src/application_tokens';
+import * as import19 from '@angular/core/src/zone/ng_zone';
+import * as import20 from '../../../platform-electron/src/shared/serializer';
+import * as import21 from '../../../platform-electron/src/shared/electron_ipc_message_bus';
+import * as import22 from '../../../platform-electron/src/shared/render_store';
+import * as import23 from '@angular/core/src/console';
+import * as import24 from '@angular/core/src/testability/testability';
+import * as import25 from '../../../platform-electron/src/shared/electron_app_ref';
+import * as import26 from '@angular/core/src/error_handler';
+import * as import27 from '../../../platform-electron/src/shared/message_bus';
+import * as import28 from '@angular/core/src/render/api';
+import * as import29 from '@angular/core/src/security';
+import * as import30 from '@angular/core/src/change_detection/differs/iterable_differs';
+import * as import31 from '@angular/core/src/change_detection/differs/keyvalue_differs';
+import * as import32 from '../../../platform-electron/src/platform-electron';
+import * as import33 from '@angular/core/src/linker/view';
+import * as import34 from '@angular/core/src/metadata/view';
+import * as import35 from '@angular/core/src/linker/view_type';
+import * as import36 from '@angular/core/src/change_detection/constants';
+import * as import37 from '@angular/core/src/linker/component_factory';
 class ElectronDemoAppInjector extends import0.NgModuleInjector<import1.ElectronDemoApp> {
   _CommonModule_0:import2.CommonModule;
   _ApplicationModule_1:import3.ApplicationModule;
-  _ElectronAppModule_2:import4.ElectronAppModule;
-  _ElectronDemoApp_3:import1.ElectronDemoApp;
-  __LOCALE_ID_4:any;
-  __NgLocalization_5:import5.NgLocaleLocalization;
-  _ErrorHandler_6:any;
-  _RootRenderer_7:import6.ElectronRootRenderer;
-  _APP_INITIALIZER_8:any[];
-  _ApplicationInitStatus_9:import7.ApplicationInitStatus;
-  _ApplicationRef__10:import8.ApplicationRef_;
-  __ApplicationRef_11:any;
-  __Compiler_12:import9.Compiler;
-  __APP_ID_13:any;
-  __DomSanitizer_14:import10.DomSanitizerImpl;
-  __Sanitizer_15:any;
-  __AnimationQueue_16:import11.AnimationQueue;
-  __ViewUtils_17:import12.ViewUtils;
-  __IterableDiffers_18:any;
-  __KeyValueDiffers_19:any;
-  constructor(parent:import13.Injector) {
+  _ElectronMainModule_2:import4.ElectronMainModule;
+  _ElectronAppRef_3:any;
+  _ElectronDemoApp_4:import1.ElectronDemoApp;
+  __LOCALE_ID_5:any;
+  __NgLocalization_6:import5.NgLocaleLocalization;
+  _ErrorHandler_7:any;
+  _ElectronMessageBus_8:any;
+  _ClientMessageBrokerFactory_9:import6.ClientMessageBrokerFactory_;
+  _ElectronRootRenderer_10:import7.ElectronRootRenderer;
+  _RootRenderer_11:any;
+  _APP_INITIALIZER_12:any[];
+  _ApplicationInitStatus_13:import8.ApplicationInitStatus;
+  _ApplicationRef__14:import9.ApplicationRef_;
+  __ApplicationRef_15:any;
+  __Compiler_16:import10.Compiler;
+  __APP_ID_17:any;
+  __DomSanitizer_18:import11.DomSanitizerImpl;
+  __Sanitizer_19:any;
+  __AnimationQueue_20:import12.AnimationQueue;
+  __ViewUtils_21:import13.ViewUtils;
+  __IterableDiffers_22:any;
+  __KeyValueDiffers_23:any;
+  __ServiceMessageBrokerFactory_24:import14.ServiceMessageBrokerFactory_;
+  __ElectronRendererManager_25:import15.ElectronRendererManager;
+  __APP_BOOTSTRAP_LISTENER_26:any[];
+  __ELECTRON_WINDOW_27:any;
+  constructor(parent:import16.Injector) {
     super(parent,[DemoAppViewNgFactory],([] as any[]));
   }
-  get _LOCALE_ID_4():any {
-    if ((this.__LOCALE_ID_4 == null)) { (this.__LOCALE_ID_4 = import3._localeFactory(this.parent.get(import14.LOCALE_ID,(null as any)))); }
-    return this.__LOCALE_ID_4;
+  get _LOCALE_ID_5():any {
+    if ((this.__LOCALE_ID_5 == null)) { (this.__LOCALE_ID_5 = import3._localeFactory(this.parent.get(import17.LOCALE_ID,(null as any)))); }
+    return this.__LOCALE_ID_5;
   }
-  get _NgLocalization_5():import5.NgLocaleLocalization {
-    if ((this.__NgLocalization_5 == null)) { (this.__NgLocalization_5 = new import5.NgLocaleLocalization(this._LOCALE_ID_4)); }
-    return this.__NgLocalization_5;
+  get _NgLocalization_6():import5.NgLocaleLocalization {
+    if ((this.__NgLocalization_6 == null)) { (this.__NgLocalization_6 = new import5.NgLocaleLocalization(this._LOCALE_ID_5)); }
+    return this.__NgLocalization_6;
   }
-  get _ApplicationRef_11():any {
-    if ((this.__ApplicationRef_11 == null)) { (this.__ApplicationRef_11 = this._ApplicationRef__10); }
-    return this.__ApplicationRef_11;
+  get _ApplicationRef_15():any {
+    if ((this.__ApplicationRef_15 == null)) { (this.__ApplicationRef_15 = this._ApplicationRef__14); }
+    return this.__ApplicationRef_15;
   }
-  get _Compiler_12():import9.Compiler {
-    if ((this.__Compiler_12 == null)) { (this.__Compiler_12 = new import9.Compiler()); }
-    return this.__Compiler_12;
+  get _Compiler_16():import10.Compiler {
+    if ((this.__Compiler_16 == null)) { (this.__Compiler_16 = new import10.Compiler()); }
+    return this.__Compiler_16;
   }
-  get _APP_ID_13():any {
-    if ((this.__APP_ID_13 == null)) { (this.__APP_ID_13 = import15._appIdRandomProviderFactory()); }
-    return this.__APP_ID_13;
+  get _APP_ID_17():any {
+    if ((this.__APP_ID_17 == null)) { (this.__APP_ID_17 = import18._appIdRandomProviderFactory()); }
+    return this.__APP_ID_17;
   }
-  get _DomSanitizer_14():import10.DomSanitizerImpl {
-    if ((this.__DomSanitizer_14 == null)) { (this.__DomSanitizer_14 = new import10.DomSanitizerImpl()); }
-    return this.__DomSanitizer_14;
+  get _DomSanitizer_18():import11.DomSanitizerImpl {
+    if ((this.__DomSanitizer_18 == null)) { (this.__DomSanitizer_18 = new import11.DomSanitizerImpl()); }
+    return this.__DomSanitizer_18;
   }
-  get _Sanitizer_15():any {
-    if ((this.__Sanitizer_15 == null)) { (this.__Sanitizer_15 = this._DomSanitizer_14); }
-    return this.__Sanitizer_15;
+  get _Sanitizer_19():any {
+    if ((this.__Sanitizer_19 == null)) { (this.__Sanitizer_19 = this._DomSanitizer_18); }
+    return this.__Sanitizer_19;
   }
-  get _AnimationQueue_16():import11.AnimationQueue {
-    if ((this.__AnimationQueue_16 == null)) { (this.__AnimationQueue_16 = new import11.AnimationQueue(this.parent.get(import16.NgZone))); }
-    return this.__AnimationQueue_16;
+  get _AnimationQueue_20():import12.AnimationQueue {
+    if ((this.__AnimationQueue_20 == null)) { (this.__AnimationQueue_20 = new import12.AnimationQueue(this.parent.get(import19.NgZone))); }
+    return this.__AnimationQueue_20;
   }
-  get _ViewUtils_17():import12.ViewUtils {
-    if ((this.__ViewUtils_17 == null)) { (this.__ViewUtils_17 = new import12.ViewUtils(this._RootRenderer_7,this._Sanitizer_15,this._AnimationQueue_16)); }
-    return this.__ViewUtils_17;
+  get _ViewUtils_21():import13.ViewUtils {
+    if ((this.__ViewUtils_21 == null)) { (this.__ViewUtils_21 = new import13.ViewUtils(this._RootRenderer_11,this._Sanitizer_19,this._AnimationQueue_20)); }
+    return this.__ViewUtils_21;
   }
-  get _IterableDiffers_18():any {
-    if ((this.__IterableDiffers_18 == null)) { (this.__IterableDiffers_18 = import3._iterableDiffersFactory()); }
-    return this.__IterableDiffers_18;
+  get _IterableDiffers_22():any {
+    if ((this.__IterableDiffers_22 == null)) { (this.__IterableDiffers_22 = import3._iterableDiffersFactory()); }
+    return this.__IterableDiffers_22;
   }
-  get _KeyValueDiffers_19():any {
-    if ((this.__KeyValueDiffers_19 == null)) { (this.__KeyValueDiffers_19 = import3._keyValueDiffersFactory()); }
-    return this.__KeyValueDiffers_19;
+  get _KeyValueDiffers_23():any {
+    if ((this.__KeyValueDiffers_23 == null)) { (this.__KeyValueDiffers_23 = import3._keyValueDiffersFactory()); }
+    return this.__KeyValueDiffers_23;
+  }
+  get _ServiceMessageBrokerFactory_24():import14.ServiceMessageBrokerFactory_ {
+    if ((this.__ServiceMessageBrokerFactory_24 == null)) { (this.__ServiceMessageBrokerFactory_24 = new import14.ServiceMessageBrokerFactory_(this._ElectronMessageBus_8,this.parent.get(import20.Serializer))); }
+    return this.__ServiceMessageBrokerFactory_24;
+  }
+  get _ElectronRendererManager_25():import15.ElectronRendererManager {
+    if ((this.__ElectronRendererManager_25 == null)) { (this.__ElectronRendererManager_25 = new import15.ElectronRendererManager()); }
+    return this.__ElectronRendererManager_25;
+  }
+  get _APP_BOOTSTRAP_LISTENER_26():any[] {
+    if ((this.__APP_BOOTSTRAP_LISTENER_26 == null)) { (this.__APP_BOOTSTRAP_LISTENER_26 = [import4.waitForElectronAppReady(this._RootRenderer_11)]); }
+    return this.__APP_BOOTSTRAP_LISTENER_26;
+  }
+  get _ELECTRON_WINDOW_27():any {
+    if ((this.__ELECTRON_WINDOW_27 == null)) { (this.__ELECTRON_WINDOW_27 = {
+      id: 'main',
+      options: {}
+    }
+    ); }
+    return this.__ELECTRON_WINDOW_27;
   }
   createInternal():import1.ElectronDemoApp {
     this._CommonModule_0 = new import2.CommonModule();
     this._ApplicationModule_1 = new import3.ApplicationModule();
-    this._ElectronAppModule_2 = new import4.ElectronAppModule();
-    this._ElectronDemoApp_3 = new import1.ElectronDemoApp();
-    this._ErrorHandler_6 = import4.errorHandler();
-    this._RootRenderer_7 = new import6.ElectronRootRenderer();
-    this._APP_INITIALIZER_8 = [
-      import4.setUpRenderFlushing(this.parent.get(import16.NgZone),this._RootRenderer_7),
-      import4.setupElectronApp
-    ]
-    ;
-    this._ApplicationInitStatus_9 = new import7.ApplicationInitStatus(this._APP_INITIALIZER_8);
-    this._ApplicationRef__10 = new import8.ApplicationRef_(this.parent.get(import16.NgZone),this.parent.get(import17.Console),this,this._ErrorHandler_6,this,this._ApplicationInitStatus_9,this.parent.get(import18.TestabilityRegistry,(null as any)),this.parent.get(import18.Testability,(null as any)));
-    return this._ElectronDemoApp_3;
+    this._ElectronMainModule_2 = new import4.ElectronMainModule();
+    this._ElectronAppRef_3 = import4.createElectronAppRef(this.parent.get(import9.PlatformRef));
+    this._ElectronDemoApp_4 = new import1.ElectronDemoApp(this._ElectronAppRef_3);
+    this._ErrorHandler_7 = import4.errorHandler();
+    this._ElectronMessageBus_8 = import21.createMainRenderBus(this.parent.get(import19.NgZone));
+    this._ClientMessageBrokerFactory_9 = new import6.ClientMessageBrokerFactory_(this._ElectronMessageBus_8,this.parent.get(import20.Serializer));
+    this._ElectronRootRenderer_10 = new import7.ElectronRootRenderer(this._ClientMessageBrokerFactory_9,this._ElectronMessageBus_8,this.parent.get(import20.Serializer),this.parent.get(import22.RenderStore));
+    this._RootRenderer_11 = this._ElectronRootRenderer_10;
+    this._APP_INITIALIZER_12 = [import4.setUpRenderFlushing(this.parent.get(import19.NgZone),this._RootRenderer_11)];
+    this._ApplicationInitStatus_13 = new import8.ApplicationInitStatus(this._APP_INITIALIZER_12);
+    this._ApplicationRef__14 = new import9.ApplicationRef_(this.parent.get(import19.NgZone),this.parent.get(import23.Console),this,this._ErrorHandler_7,this,this._ApplicationInitStatus_13,this.parent.get(import24.TestabilityRegistry,(null as any)),this.parent.get(import24.Testability,(null as any)));
+    return this._ElectronDemoApp_4;
   }
   getInternal(token:any,notFoundResult:any):any {
     if ((token === import2.CommonModule)) { return this._CommonModule_0; }
     if ((token === import3.ApplicationModule)) { return this._ApplicationModule_1; }
-    if ((token === import4.ElectronAppModule)) { return this._ElectronAppModule_2; }
-    if ((token === import1.ElectronDemoApp)) { return this._ElectronDemoApp_3; }
-    if ((token === import14.LOCALE_ID)) { return this._LOCALE_ID_4; }
-    if ((token === import5.NgLocalization)) { return this._NgLocalization_5; }
-    if ((token === import19.ErrorHandler)) { return this._ErrorHandler_6; }
-    if ((token === import20.RootRenderer)) { return this._RootRenderer_7; }
-    if ((token === import7.APP_INITIALIZER)) { return this._APP_INITIALIZER_8; }
-    if ((token === import7.ApplicationInitStatus)) { return this._ApplicationInitStatus_9; }
-    if ((token === import8.ApplicationRef_)) { return this._ApplicationRef__10; }
-    if ((token === import8.ApplicationRef)) { return this._ApplicationRef_11; }
-    if ((token === import9.Compiler)) { return this._Compiler_12; }
-    if ((token === import15.APP_ID)) { return this._APP_ID_13; }
-    if ((token === import10.DomSanitizer)) { return this._DomSanitizer_14; }
-    if ((token === import21.Sanitizer)) { return this._Sanitizer_15; }
-    if ((token === import11.AnimationQueue)) { return this._AnimationQueue_16; }
-    if ((token === import12.ViewUtils)) { return this._ViewUtils_17; }
-    if ((token === import22.IterableDiffers)) { return this._IterableDiffers_18; }
-    if ((token === import23.KeyValueDiffers)) { return this._KeyValueDiffers_19; }
+    if ((token === import4.ElectronMainModule)) { return this._ElectronMainModule_2; }
+    if ((token === import25.ElectronAppRef)) { return this._ElectronAppRef_3; }
+    if ((token === import1.ElectronDemoApp)) { return this._ElectronDemoApp_4; }
+    if ((token === import17.LOCALE_ID)) { return this._LOCALE_ID_5; }
+    if ((token === import5.NgLocalization)) { return this._NgLocalization_6; }
+    if ((token === import26.ErrorHandler)) { return this._ErrorHandler_7; }
+    if ((token === import27.ElectronMessageBus)) { return this._ElectronMessageBus_8; }
+    if ((token === import6.ClientMessageBrokerFactory)) { return this._ClientMessageBrokerFactory_9; }
+    if ((token === import7.ElectronRootRenderer)) { return this._ElectronRootRenderer_10; }
+    if ((token === import28.RootRenderer)) { return this._RootRenderer_11; }
+    if ((token === import8.APP_INITIALIZER)) { return this._APP_INITIALIZER_12; }
+    if ((token === import8.ApplicationInitStatus)) { return this._ApplicationInitStatus_13; }
+    if ((token === import9.ApplicationRef_)) { return this._ApplicationRef__14; }
+    if ((token === import9.ApplicationRef)) { return this._ApplicationRef_15; }
+    if ((token === import10.Compiler)) { return this._Compiler_16; }
+    if ((token === import18.APP_ID)) { return this._APP_ID_17; }
+    if ((token === import11.DomSanitizer)) { return this._DomSanitizer_18; }
+    if ((token === import29.Sanitizer)) { return this._Sanitizer_19; }
+    if ((token === import12.AnimationQueue)) { return this._AnimationQueue_20; }
+    if ((token === import13.ViewUtils)) { return this._ViewUtils_21; }
+    if ((token === import30.IterableDiffers)) { return this._IterableDiffers_22; }
+    if ((token === import31.KeyValueDiffers)) { return this._KeyValueDiffers_23; }
+    if ((token === import14.ServiceMessageBrokerFactory)) { return this._ServiceMessageBrokerFactory_24; }
+    if ((token === import15.ElectronRendererManager)) { return this._ElectronRendererManager_25; }
+    if ((token === import18.APP_BOOTSTRAP_LISTENER)) { return this._APP_BOOTSTRAP_LISTENER_26; }
+    if ((token === import32.ELECTRON_WINDOW)) { return this._ELECTRON_WINDOW_27; }
     return notFoundResult;
   }
   destroyInternal():void {
-    this._ApplicationRef__10.ngOnDestroy();
+    this._ApplicationRef__14.ngOnDestroy();
   }
 }
 export const ElectronDemoAppNgFactory:import0.NgModuleFactory<import1.ElectronDemoApp> = new import0.NgModuleFactory<any>(ElectronDemoAppInjector,import1.ElectronDemoApp);
@@ -156,47 +201,47 @@ export class Wrapper_DemoAppView {
     this.context = new import1.DemoAppView();
     this._expr_0 = (undefined as any);
   }
-  ngOnDetach(view:import24.AppView<any>,componentView:import24.AppView<any>,el:any):void {
+  ngOnDetach(view:import33.AppView<any>,componentView:import33.AppView<any>,el:any):void {
   }
   ngOnDestroy():void {
   }
-  check_foo(view:import24.AppView<any>,currValue:any,forceUpdate:boolean):void {
-    if (import12.checkBinding(view,this._expr_0,currValue,forceUpdate)) {
+  check_foo(view:import33.AppView<any>,currValue:any,forceUpdate:boolean):void {
+    if (import13.checkBinding(view,this._expr_0,currValue,forceUpdate)) {
       this._changed = true;
       this.context.foo = currValue;
       this._expr_0 = currValue;
     }
   }
-  ngDoCheck(view:import24.AppView<any>,el:any):boolean {
+  ngDoCheck(view:import33.AppView<any>,el:any):boolean {
     var changed:any = this._changed;
     this._changed = false;
     return changed;
   }
-  checkHost(view:import24.AppView<any>,componentView:import24.AppView<any>,el:any):void {
+  checkHost(view:import33.AppView<any>,componentView:import33.AppView<any>,el:any):void {
   }
   handleEvent(eventName:string,$event:any):boolean {
     var result:boolean = true;
     return result;
   }
-  subscribe(view:import24.AppView<any>,_eventHandler:any):void {
+  subscribe(view:import33.AppView<any>,_eventHandler:any):void {
     this._eventHandler = _eventHandler;
   }
 }
-var renderType_DemoAppView_Host:import20.RenderComponentType = import12.createRenderComponentType('',0,import25.ViewEncapsulation.None,([] as any[]),{});
-class View_DemoAppView_Host_0 extends import24.AppView<any> {
+var renderType_DemoAppView_Host:import28.RenderComponentType = import13.createRenderComponentType('',0,import34.ViewEncapsulation.None,([] as any[]),{});
+class View_DemoAppView_Host_0 extends import33.AppView<any> {
   _el_0:any;
-  compView_0:import24.AppView<import1.DemoAppView>;
+  compView_0:import33.AppView<import1.DemoAppView>;
   _DemoAppView_0_3:Wrapper_DemoAppView;
-  constructor(viewUtils:import12.ViewUtils,parentView:import24.AppView<any>,parentIndex:number,parentElement:any) {
-    super(View_DemoAppView_Host_0,renderType_DemoAppView_Host,import26.ViewType.HOST,viewUtils,parentView,parentIndex,parentElement,import27.ChangeDetectorStatus.CheckAlways);
+  constructor(viewUtils:import13.ViewUtils,parentView:import33.AppView<any>,parentIndex:number,parentElement:any) {
+    super(View_DemoAppView_Host_0,renderType_DemoAppView_Host,import35.ViewType.HOST,viewUtils,parentView,parentIndex,parentElement,import36.ChangeDetectorStatus.CheckAlways);
   }
-  createInternal(rootSelector:string):import28.ComponentRef<any> {
-    this._el_0 = import12.selectOrCreateRenderHostElement(this.renderer,'demo-app',import12.EMPTY_INLINE_ARRAY,rootSelector,(null as any));
+  createInternal(rootSelector:string):import37.ComponentRef<any> {
+    this._el_0 = import13.selectOrCreateRenderHostElement(this.renderer,'demo-app',import13.EMPTY_INLINE_ARRAY,rootSelector,(null as any));
     this.compView_0 = new View_DemoAppView_0(this.viewUtils,this,0,this._el_0);
     this._DemoAppView_0_3 = new Wrapper_DemoAppView();
     this.compView_0.create(this._DemoAppView_0_3.context);
     this.init(this._el_0,((<any>this.renderer).directRenderer? (null as any): [this._el_0]),(null as any));
-    return new import28.ComponentRef_<any>(0,this,this._el_0,this._DemoAppView_0_3.context);
+    return new import37.ComponentRef_<any>(0,this,this._el_0,this._DemoAppView_0_3.context);
   }
   injectorGetInternal(token:any,requestNodeIndex:number,notFoundResult:any):any {
     if (((token === import1.DemoAppView) && (0 === requestNodeIndex))) { return this._DemoAppView_0_3.context; }
@@ -213,18 +258,36 @@ class View_DemoAppView_Host_0 extends import24.AppView<any> {
     cb(this._el_0,ctx);
   }
 }
-export const DemoAppViewNgFactory:import28.ComponentFactory<import1.DemoAppView> = new import28.ComponentFactory<import1.DemoAppView>('demo-app',View_DemoAppView_Host_0,import1.DemoAppView);
+export const DemoAppViewNgFactory:import37.ComponentFactory<import1.DemoAppView> = new import37.ComponentFactory<import1.DemoAppView>('demo-app',View_DemoAppView_Host_0,import1.DemoAppView);
 const styles_DemoAppView:any[] = ([] as any[]);
-var renderType_DemoAppView:import20.RenderComponentType = import12.createRenderComponentType('',0,import25.ViewEncapsulation.None,styles_DemoAppView,{});
-export class View_DemoAppView_0 extends import24.AppView<import1.DemoAppView> {
-  _text_0:any;
-  constructor(viewUtils:import12.ViewUtils,parentView:import24.AppView<any>,parentIndex:number,parentElement:any) {
-    super(View_DemoAppView_0,renderType_DemoAppView,import26.ViewType.COMPONENT,viewUtils,parentView,parentIndex,parentElement,import27.ChangeDetectorStatus.CheckAlways);
+var renderType_DemoAppView:import28.RenderComponentType = import13.createRenderComponentType('',0,import34.ViewEncapsulation.None,styles_DemoAppView,{});
+export class View_DemoAppView_0 extends import33.AppView<import1.DemoAppView> {
+  _el_0:any;
+  _text_1:any;
+  _el_2:any;
+  _text_3:any;
+  _text_4:any;
+  _text_5:any;
+  constructor(viewUtils:import13.ViewUtils,parentView:import33.AppView<any>,parentIndex:number,parentElement:any) {
+    super(View_DemoAppView_0,renderType_DemoAppView,import35.ViewType.COMPONENT,viewUtils,parentView,parentIndex,parentElement,import36.ChangeDetectorStatus.CheckAlways);
   }
-  createInternal(rootSelector:string):import28.ComponentRef<any> {
+  createInternal(rootSelector:string):import37.ComponentRef<any> {
     const parentRenderNode:any = this.renderer.createViewRoot(this.parentElement);
-    this._text_0 = this.renderer.createText(parentRenderNode,'hello world',(null as any));
-    this.init((null as any),((<any>this.renderer).directRenderer? (null as any): [this._text_0]),(null as any));
+    this._el_0 = import13.createRenderElement(this.renderer,parentRenderNode,'div',import13.EMPTY_INLINE_ARRAY,(null as any));
+    this._text_1 = this.renderer.createText(this._el_0,'\n  ',(null as any));
+    this._el_2 = import13.createRenderElement(this.renderer,this._el_0,'h1',import13.EMPTY_INLINE_ARRAY,(null as any));
+    this._text_3 = this.renderer.createText(this._el_2,'hello world',(null as any));
+    this._text_4 = this.renderer.createText(this._el_0,'\n',(null as any));
+    this._text_5 = this.renderer.createText(parentRenderNode,'\n',(null as any));
+    this.init((null as any),((<any>this.renderer).directRenderer? (null as any): [
+      this._el_0,
+      this._text_1,
+      this._el_2,
+      this._text_3,
+      this._text_4,
+      this._text_5
+    ]
+    ),(null as any));
     return (null as any);
   }
 }

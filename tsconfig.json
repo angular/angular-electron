@@ -1,18 +1,23 @@
 {
-    "compilerOptions": {
-        "module": "commonjs",
-        "target": "es5",
-        "noImplicitAny": false,
-        "sourceMap": false,
-		"experimentalDecorators": true,
-		"emitDecoratorMetadata": true,
-		"outDir": "dist",
-		"declaration": true,
-		"moduleResolution": "node"
-    },
-    "files": [
-		"typings/browser.d.ts",
-		"./src/renderer.ts",
-		"./src/main.ts"
-	]
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es5",
+    "noImplicitAny": false,
+    "sourceMap": false,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "outDir": "lib",
+    "declaration": true,
+    "moduleResolution": "node",
+    "lib": [
+      "es2015",
+      "dom"
+    ]
+  },
+  "include": [
+    "modules/**/*.ts"
+  ],
+  "angularCompilerOptions": {
+    "genDir": "modules/ngfactory"
+  }
 }

@@ -4,3 +4,5 @@ typings/
 npm-debug.log
 .DS_Store
 demo/*.js
+modules/ngfactory/
+lib/
