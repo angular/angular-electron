@@ -1,7 +1,7 @@
 {
   "name": "@angular2/electron",
   "devDependencies": {},
-  "ambientDependencies": {
+  "globalDependencies": {
     "es6-shim": "github:DefinitelyTyped/DefinitelyTyped/es6-shim/es6-shim.d.ts#6697d6f7dadbf5773cb40ecda35a76027e0783b2",
     "github-electron": "github:DefinitelyTyped/DefinitelyTyped/github-electron/github-electron.d.ts#f16c4922a7dd6d359a197e4cc5103463ba68cf9e",
     "node": "github:DefinitelyTyped/DefinitelyTyped/node/node.d.ts#138ad74b9e8e6c08af7633964962835add4c91e2"
