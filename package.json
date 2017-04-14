@@ -9,7 +9,7 @@
     "setup": "npm install --no-optional && npm run typings-install",
     "setup-demo": "npm install --no-optional angular2@2.0.0-beta.12 es6-promise@^3.1.2 es6-shim@0.35.0 reflect-metadata@0.1.2 rxjs@5.0.0-beta.2 zone.js@^0.6.6",
     "build": "npm run clean && tsc",
-    "build_demo": "tsc typings/browser.d.ts demo/main.ts demo/app_ui.ts --module commonjs -t es5 --experimentalDecorators --emitDecoratorMetadata",
+    "build_demo": "tsc typings/index.d.ts demo/main.ts demo/app_ui.ts --module commonjs -t es5 --experimentalDecorators --emitDecoratorMetadata",
     "test": "echo Not supported yet",
     "demo": "npm run build && npm run build_demo && electron ./demo",
     "start": "npm run demo"
